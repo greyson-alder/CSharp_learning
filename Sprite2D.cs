@@ -24,6 +24,10 @@ public partial class Sprite2D : Godot.Sprite2D
         if (Input.IsActionPressed("ui_up")) {
             velocity = Vector2.Up.Rotated(Rotation) * Speed;
         }
+        if (Input.IsActionPressed("ui_down")) {
+            velocity = Vector2.Up.Rotated(Rotation) * Speed * -1;
+        }
+
        
 
         Position += velocity * (float)delta;
