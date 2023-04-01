@@ -18,4 +18,15 @@ public partial class Sprite2D : Godot.Sprite2D
         // this.ApplyScale(new Vector2((float)1.1, (float)1.1));
     }
 
+    // we use unhandled_input() when we want logic to run on a key-press
+    // i.e. not every frame, only on that event
+    public override void _UnhandledInput(InputEvent @event)
+    {
+        if (@event is InputEventKey eventKey) {
+            if (eventKey.Pressed && eventKey.Keycode == Key.Escape) {
+                GetTree().Quit();
+            }
+        }
+    }
+
 }
