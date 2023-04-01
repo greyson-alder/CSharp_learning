@@ -8,6 +8,12 @@ public partial class Sprite2D : Godot.Sprite2D
  private float AngularSpeed = Mathf.Pi;
 
     public override void _Process(double delta) {
+        var boost = 1;
+        if (Input.IsActionPressed("ui_select")) {
+            boost = 2;
+        }
+
+
         var direction = 0;
         if (Input.IsActionPressed("ui_left")) {
             direction = -1;
@@ -22,10 +28,10 @@ public partial class Sprite2D : Godot.Sprite2D
         // The UP.rotated(rotation) is a vector which points ahead RELATIVE to the icon
         var velocity = Vector2.Zero;
         if (Input.IsActionPressed("ui_up")) {
-            velocity = Vector2.Up.Rotated(Rotation) * Speed;
+            velocity = Vector2.Up.Rotated(Rotation) * Speed * boost;
         }
         if (Input.IsActionPressed("ui_down")) {
-            velocity = Vector2.Up.Rotated(Rotation) * Speed * -1;
+            velocity = Vector2.Up.Rotated(Rotation) * Speed * -1 * boost;
         }
 
        
